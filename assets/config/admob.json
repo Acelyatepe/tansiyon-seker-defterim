@@ -1,0 +1,11 @@
+{
+  "useProductionAds": true,
+
+  "androidTestAppId": "ca-app-pub-3940256099942544~3347511713",
+
+  "androidTestRewardedId": "ca-app-pub-3940256099942544/5224354917",
+
+  "androidProductionAppId": "ca-app-pub-9505058882213534~7703924641",
+
+  "androidProductionRewardedId": "ca-app-pub-9505058882213534/7536403686"
+}

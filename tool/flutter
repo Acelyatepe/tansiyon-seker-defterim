@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+if [ -n "${TANSIYON_FLUTTER_SDK:-}" ]; then
+  flutter_command="$TANSIYON_FLUTTER_SDK/bin/flutter"
+else
+  flutter_command=$(command -v flutter)
+fi
+if [ -n "${TANSIYON_JAVA_HOME:-}" ]; then
+  compatible_java=$TANSIYON_JAVA_HOME
+elif [ -x /usr/libexec/java_home ]; then
+  compatible_java=$(/usr/libexec/java_home -v 17)
+else
+  compatible_java=${JAVA_HOME:-}
+fi
+if [ -n "$compatible_java" ]; then
+  export JAVA_HOME="$compatible_java"
+  export GRADLE_OPTS="${GRADLE_OPTS:-} -Dorg.gradle.java.home=$compatible_java"
+fi
+exec "$flutter_command" "$@"
